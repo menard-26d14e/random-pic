@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ランダム画像</title>
+  <style>
+    /* 画面の中央に画像をきれいに収める設定 */
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #ffffff;
+    }
+    img {
+      max-width: 95%;
+      max-height: 95vh;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="display-image" src="" alt="表示画像">
+
+  <script>
+    // ▼ ここにアップロードした画像ファイル名を正確に入力します（大文字・小文字も区別されます）
+    const imageList = [
+      'pic1.png',
+      'pic2.png',
+      'pic3.png'
+    ];
+
+    // 配列の中からランダムに1つ選ぶ
+    const randomIndex = Math.floor(Math.random() * imageList.length);
+    const selectedImage = imageList[randomIndex];
+
+    // 画像を表示（スマホのキャッシュで同じ画像が出続けるのを防ぐパラメータ付き）
+    document.getElementById('display-image').src = selectedImage + '?t=' + Date.now();
+  </script>
+
+</body>
+</html>
